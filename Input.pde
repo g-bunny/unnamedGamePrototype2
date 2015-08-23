@@ -14,6 +14,12 @@ void keyPressed(){
   if(key == ' '){
     jump = true;
   }
+  if (key == '1'){
+    eyeZ -= 10;
+  }
+  if (key == '2'){
+    eyeZ += 10;
+  }
 }
 
 void keyReleased(){
