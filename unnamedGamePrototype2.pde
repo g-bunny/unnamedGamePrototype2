@@ -1,5 +1,6 @@
+int insideLength = 10;
 Frame3D baseFrame;
-Frame3D insideFrame;
+Frame3D[] insideFrame = new Frame3D[insideLength];
 float eyeX;
 float eyeY;
 float eyeZ;
@@ -45,8 +46,9 @@ void setup() {
   upY = 1;
   upZ = 0;
   baseFrame = new Frame3D(purple, blue, red, smallNumber, bigNumber, smallNumber, bigNumber, smallNumber, bigNumber);
-  insideFrame = new Frame3D(red, purple, blue, 10, bigNumber-offsetBig, 10, bigNumber-offsetBig, 10, bigNumber-offsetBig);
-  
+  for (int i = 0; i < insideLength; i++){
+    insideFrame[i] = new Frame3D(red, purple, blue, 10 + i*10, bigNumber - offsetBig + 10*i, 10 + i * 10, bigNumber - offsetBig + 10* i, 10 + i * 10, bigNumber-offsetBig + 10 * i);
+  }
   player = new Player(0,0,0);
 }
 
@@ -56,8 +58,10 @@ void draw() {
 
   baseFrame.display();
   baseFrame.rotateMe();
-  insideFrame.display();
-  insideFrame.rotateMe();
+  for (int i = 0; i < insideLength; i++){
+    insideFrame[i].display();
+    insideFrame[i].rotateMe();
+  }
   player.display();
   player.move();
   player.jump();
